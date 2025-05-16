@@ -13,3 +13,7 @@ And here are some others
 4. JavaScript: https://www.movable-type.co.uk/scripts/sha256.html
 
 Reading tutorial and breaking down the task into multiple parts so we can work on different parts at once.
+We're going to try how to compute sha256 hash by hand to better understand the process.
+https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md
+https://sha256algorithm.com/
+-64 mod 512
