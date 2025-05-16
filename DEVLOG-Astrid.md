@@ -4,5 +4,13 @@ This document must be updated daily every time you finish a work session.
 
 ## Astrid Harrington
 
-### 2024-01-02 - Brief description
-Expanded description including how much time was spent on task.
+### 2025-05-16 - Preliminary Research
+
+We located the following four sources for constructing sha256:
+
+1. Python: https://medium.com/@domspaulo/python-implementation-of-sha-256-from-scratch-924f660c5d57
+2. Java: https://github.com/softknk/SHA256
+3. C: https://www.tony.software/posts/sha256_building_hash_algorithm_scratch/
+4. JavaScript: https://www.movable-type.co.uk/scripts/sha256.html
+
+We are going to spent some time investigating these sources. We plan to do our project in Java, but haven't found a walkthrough in Java (all we have is an example sha256 encoder). However, the Python walkthrough seems approachable and will probably be helpful.
