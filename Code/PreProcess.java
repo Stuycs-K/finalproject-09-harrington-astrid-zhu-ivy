@@ -6,8 +6,20 @@ class PreProcess{
 
     public static byte[] preProcess(String input){
         byte[] bytes = input.getBytes();
-        bytes = append((byte)1, bytes);
+        int length = bytes.length * 8; // # of digits required for message representation in binary
+        bytes = append((byte)128, bytes); // appends big endian 1
         printArray(bytes);
+        int zeroBitsNeeded = 512 - (length + 8 + 64) % 512;
+        byte[] zeroPadding = new byte[zeroBitsNeeded / 8];
+        bytes = combine(bytes,zeroPadding);
+
+        //THIS IS THE PROBLEM: must append 64 bits!!!
+        bytes = append((byte)length,bytes);
+
+        printArray(bytes);
+        System.out.println("Length: " + bytes.length);
+        System.out.println("Zeros: " + countZeros(bytes));
+
         return new byte[0];
     }
 
@@ -29,6 +41,27 @@ class PreProcess{
         }
         bytes[array.length] = b;
         return(bytes);
+    }
+
+    public static byte[] combine(byte[] bytes1, byte[] bytes2){
+        byte[] bytes = new byte[bytes1.length + bytes2.length];
+        for (int i = 0; i < bytes1.length; i++){
+            bytes[i] = bytes1[i];
+        }
+        for (int i = bytes1.length; i < bytes1.length + bytes2.length; i++){
+            bytes[i] = bytes2[i - bytes1.length];
+        }
+        return(bytes);
+    }
+
+    public static int countZeros(byte[] bytes){
+        int count = 0;
+        for (int i = 0; i < bytes.length; i++){
+            if (bytes[i] == 0){
+                count++;
+            }
+        }
+        return(count);
     }
 
 }
