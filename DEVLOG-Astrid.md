@@ -20,3 +20,9 @@ We are struggling to understand the steps involved in building sha256, so we are
 https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md
 
 Then we will create a plan for how to proceed.
+
+### 2025-05-19 - Started work on preprocessing
+
+Having reviewed the steps required to build sha-256, I decided to start by working on the preprocessing function (which involves converting the message to bits, adding a big-endian 1, padding with zeros, and adding a 64-bit integer to represent the length of the original message such that the final length of the message is a multiple of 512 bits).
+
+I made some progress but ran into a small issue that I plan to fix tonight.
