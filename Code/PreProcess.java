@@ -1,0 +1,67 @@
+class PreProcess{
+    public static void main(String[] args){
+        String input = "hello world";
+        preProcess(input);
+    }
+
+    public static byte[] preProcess(String input){
+        byte[] bytes = input.getBytes();
+        int length = bytes.length * 8; // # of digits required for message representation in binary
+        bytes = append((byte)128, bytes); // appends big endian 1
+        printArray(bytes);
+        int zeroBitsNeeded = 512 - (length + 8 + 64) % 512;
+        byte[] zeroPadding = new byte[zeroBitsNeeded / 8];
+        bytes = combine(bytes,zeroPadding);
+
+        //THIS IS THE PROBLEM: must append 64 bits!!!
+        bytes = append((byte)length,bytes);
+
+        printArray(bytes);
+        System.out.println("Length: " + bytes.length);
+        System.out.println("Zeros: " + countZeros(bytes));
+
+        return new byte[0];
+    }
+
+    public static void printArray(byte[] array){
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++){
+            System.out.print(array[i]);
+            if (i < array.length - 1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+    public static byte[] append(byte b, byte[] array){
+        byte[] bytes = new byte[array.length + 1];
+        for (int i = 0; i < array.length; i++){
+            bytes[i] = array[i];
+        }
+        bytes[array.length] = b;
+        return(bytes);
+    }
+
+    public static byte[] combine(byte[] bytes1, byte[] bytes2){
+        byte[] bytes = new byte[bytes1.length + bytes2.length];
+        for (int i = 0; i < bytes1.length; i++){
+            bytes[i] = bytes1[i];
+        }
+        for (int i = bytes1.length; i < bytes1.length + bytes2.length; i++){
+            bytes[i] = bytes2[i - bytes1.length];
+        }
+        return(bytes);
+    }
+
+    public static int countZeros(byte[] bytes){
+        int count = 0;
+        for (int i = 0; i < bytes.length; i++){
+            if (bytes[i] == 0){
+                count++;
+            }
+        }
+        return(count);
+    }
+
+}
