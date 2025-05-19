@@ -17,3 +17,6 @@ We're going to try how to compute sha256 hash by hand to better understand the p
 https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md
 https://sha256algorithm.com/
 -64 mod 512
+
+### 2025-05-19 - Coding rotate
+Since sha256 requires rightrotate and rightshift, I'm trying to code that right now. I know java has some built in functions for rotating integers, so I'll try to use that but I'm facing integer number too large errors.
