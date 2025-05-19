@@ -14,3 +14,9 @@ We located the following four sources for constructing sha256:
 4. JavaScript: https://www.movable-type.co.uk/scripts/sha256.html
 
 We are going to spent some time investigating these sources. We plan to do our project in Java, but haven't found a walkthrough in Java (all we have is an example sha256 encoder). However, the Python walkthrough seems approachable and will probably be helpful.
+
+We are struggling to understand the steps involved in building sha256, so we are going to read through the following document:
+
+https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md
+
+Then we will create a plan for how to proceed.
