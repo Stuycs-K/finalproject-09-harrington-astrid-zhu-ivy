@@ -14,7 +14,8 @@ class PreProcess{
         bytes = combine(bytes,zeroPadding);
 
         //THIS IS THE PROBLEM: must append 64 bits!!!
-        bytes = append((byte)length,bytes);
+        byte[] length64Bit = make64Bit(length);
+        bytes = combine(bytes,length64Bit);
 
         printArray(bytes);
         System.out.println("Length: " + bytes.length);
@@ -62,6 +63,16 @@ class PreProcess{
             }
         }
         return(count);
+    }
+
+    public static byte[] make64Bit(int k){
+        byte[] bytes = new byte[8];
+        int i = 1;
+        while (k > 0){
+            bytes[bytes.length - i] = (byte)(k % 256);
+            k /= 256;
+        }
+        return(bytes);
     }
 
 }
