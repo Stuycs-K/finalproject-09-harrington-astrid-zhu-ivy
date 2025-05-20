@@ -1,14 +1,24 @@
+/* NOTES ON PREPROCESS: 
+
+1. preProcess(String input) returns padded message.
+2. parsing(byte[] bytes) returns byte[][] with the rows as 512-bit chunks that can be manipulated by the sha256 algorithm.
+
+*/
+
+
 class PreProcess{
     public static void main(String[] args){
         String input = "hello world";
-        preProcess(input);
+        byte[] bytes = preProcess(input);
+        byte[][] parsed = parsing(bytes);
+        //printDoubleArray(parsed);
     }
 
     public static byte[] preProcess(String input){
         byte[] bytes = input.getBytes();
         int length = bytes.length * 8; // # of digits required for message representation in binary
         bytes = append((byte)128, bytes); // appends big endian 1
-        printArray(bytes);
+        //printArray(bytes);
         int zeroBitsNeeded = 512 - ((length + 8 + 64) % 512);
         byte[] zeroPadding = new byte[zeroBitsNeeded / 8];
         bytes = combine(bytes,zeroPadding);
@@ -17,11 +27,20 @@ class PreProcess{
         byte[] length64Bit = make64Bit(length);
         bytes = combine(bytes,length64Bit);
 
+        //DEBUGGING
         printArray(bytes);
         System.out.println("Length: " + bytes.length);
         System.out.println("Zeros: " + countZeros(bytes));
 
-        return new byte[0];
+        return bytes;
+    }
+    
+    public static byte[][] parsing(byte[] bytes){
+        byte[][] parsed = new byte[bytes.length / (512 / 8)][512/8];
+        for (int i = 0; i < bytes.length; i++){
+            parsed[i / (512/8)][i % (512/8)] = bytes[i];
+        }
+        return(parsed);
     }
 
     public static void printArray(byte[] array){
@@ -73,6 +92,14 @@ class PreProcess{
             k /= 256;
         }
         return(bytes);
+    }
+
+    public static void printDoubleArray(byte[][] array){
+        System.out.println("BEGIN DOUBLE ARRAY");
+        for (int i = 0; i < array.length; i++){
+            printArray(array[i]);
+        }
+        System.out.println("END DOUBLE ARRAY");
     }
 
 }
