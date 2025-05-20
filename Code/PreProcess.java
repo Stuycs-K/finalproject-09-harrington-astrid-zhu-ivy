@@ -9,7 +9,7 @@ class PreProcess{
         int length = bytes.length * 8; // # of digits required for message representation in binary
         bytes = append((byte)128, bytes); // appends big endian 1
         printArray(bytes);
-        int zeroBitsNeeded = 512 - (length + 8 + 64) % 512;
+        int zeroBitsNeeded = 512 - ((length + 8 + 64) % 512);
         byte[] zeroPadding = new byte[zeroBitsNeeded / 8];
         bytes = combine(bytes,zeroPadding);
 
