@@ -22,3 +22,6 @@ https://sha256algorithm.com/
 Since sha256 requires rightrotate and rightshift, I'm trying to code that right now. I know java has some built in functions for rotating integers, so I'll try to use that but I'm facing integer number too large errors.
 
 I worked on it a bit at home, and right rotate and right shift are now working! I've tried on some strings and xor produces the right result.
+
+### 2025-05-20 - Finished rightrotate and rightshift
+I've finished the subfunctions needed to transform the message into meesage schedule. It's harder to see if my function is right when everything is ones and zeroes and there are 64 cells in the array. It doesn't seem to work, but it has worked on individual cases, so I'll have to check that.

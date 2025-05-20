@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Transform{
   public static void main(String[] args){
     String input = "hello world";
@@ -16,7 +18,9 @@ class Transform{
     int[] w = new int[64];
     w[0] = Integer.parseInt("01101000011001010110110001101100", 2);
     w[1] = Integer.parseInt("01101111001000000111011101101111", 2);
+    w[2] = Integer.parseInt("01110010011011000110010010000000", 2);
     msgSchedule(w);
+    printBin(w);
   }
 
   public static int rightshift(int n, int d){
@@ -24,7 +28,7 @@ class Transform{
   }
 
   public static void msgSchedule(int[] w){
-    for (int i = 16; i < 17; i++){
+    for (int i = 16; i < 64; i++){
       int n = w[i-15];
       int s0 = Integer.rotateRight(n, 7) ^ Integer.rotateRight(n, 18) ^ rightshift(n, 3);
       n = w[i-2];
@@ -33,5 +37,11 @@ class Transform{
     }
     System.out.println(w[16]); // mod 2^32 ?
     System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
+  }
+
+  public static void printBin(int[] w){
+    for (int num : w) {
+            System.out.println(Integer.toBinaryString(num));
+        }
   }
 }
