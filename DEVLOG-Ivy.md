@@ -20,3 +20,5 @@ https://sha256algorithm.com/
 
 ### 2025-05-19 - Coding rotate
 Since sha256 requires rightrotate and rightshift, I'm trying to code that right now. I know java has some built in functions for rotating integers, so I'll try to use that but I'm facing integer number too large errors.
+
+I worked on it a bit at home, and right rotate and right shift are now working! I've tried on some strings and xor produces the right result.
