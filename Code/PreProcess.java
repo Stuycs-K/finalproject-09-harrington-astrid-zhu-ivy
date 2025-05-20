@@ -10,7 +10,8 @@ class PreProcess{
     public static void main(String[] args){
         String input = "hello world";
         int[] bits = preProcess(input);
-        //int[][] parsed = parsing(bytes);
+        //byte[][] parsed = parsing(bytes);
+        int[][] parsed = parsing(bits);
         //printDoubleArray(parsed);
     }
 
@@ -45,9 +46,9 @@ class PreProcess{
         bits = combine(bits,length64Bit);
 
         //DEBUGGING
-        printArray(bits);
-        System.out.println("Length: " + bits.length);
-        //System.out.println("Zeros: " + countZeros(bytes));
+        //printArray(bits);
+        //System.out.println("Length: " + bits.length);
+        //System.out.println("Zeros: " + countZeros(bits));
 
         return bits;
     }
@@ -56,6 +57,14 @@ class PreProcess{
         byte[][] parsed = new byte[bytes.length / (512 / 8)][512/8];
         for (int i = 0; i < bytes.length; i++){
             parsed[i / (512/8)][i % (512/8)] = bytes[i];
+        }
+        return(parsed);
+    }
+
+    public static int[][] parsing(int[] bits){
+        int[][] parsed = new int[bits.length / 512][512];
+        for (int i = 0; i < bits.length; i++){
+            parsed[i / (512)][i % (512)] = bits[i];
         }
         return(parsed);
     }
@@ -114,6 +123,16 @@ class PreProcess{
         int count = 0;
         for (int i = 0; i < bytes.length; i++){
             if (bytes[i] == 0){
+                count++;
+            }
+        }
+        return(count);
+    }
+
+    public static int countZeros(int[] bits){
+        int count = 0;
+        for (int i = 0; i < bits.length; i++){
+            if (bits[i] == 0){
                 count++;
             }
         }
