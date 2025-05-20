@@ -36,3 +36,11 @@ https://stackoverflow.com/questions/18754230/how-a-positive-value-becomes-negati
 However, this may create some problems if we have to recast to ints to rotate. I need to consider this.
 
 I also finished the function to parse byte[] bytes into byte[][] parsed (divided into rows of length 512 bits in order to make the next section of the algorithm easier).
+
+### 2025-05-20 - Modified padding & parsing
+
+I was absent from class today for a doctor's appointment, so I was only able to work from home. However, after conferring with Ivy, I decided that instead of returning a byte[][] object, I would return int[] bits that contained the individual bits and and int[][] parsed (also divided into rows of length 512 bits). This would help make the product of preprocessing compatible with the future steps involved in the sha256 algorithm.
+
+This required that I rewrite most of the helper functions I had been using. More importantly, I made use of the Integer.toBinaryString() function to find the binary values of certain ints. This function does not always return Strings of length 8, requiring some troubleshooting to ensure that the bits were inserted in the correct location in the array.
+
+At this point, I believe both the preprocessing and parsing functions are working.
