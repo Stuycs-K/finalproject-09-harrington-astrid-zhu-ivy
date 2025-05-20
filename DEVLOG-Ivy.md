@@ -25,3 +25,5 @@ I worked on it a bit at home, and right rotate and right shift are now working! 
 
 ### 2025-05-20 - Finished rightrotate and rightshift
 I've finished the subfunctions needed to transform the message into meesage schedule. It's harder to see if my function is right when everything is ones and zeroes and there are 64 cells in the array. It doesn't seem to work, but it has worked on individual cases, so I'll have to check that.
+
+Step 5 is working! I checked with the example in the github/liangtengyu website.
