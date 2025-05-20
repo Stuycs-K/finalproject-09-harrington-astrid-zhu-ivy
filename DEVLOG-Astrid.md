@@ -29,7 +29,7 @@ I made some progress but ran into a small issue that I plan to fix tonight.
 
 ### 2025-05-19 - Finished padding & parsing
 
-I corrected the error that I ran into in classwork and I think I got the padding function working. Unfortunately, when I try to verify the array, it seems to suggest that my big-endian 1 is being represented as a negative number, -128 specificaly. I think this may just be an issue with representation and not a deeper flaw, considering this chain on StackOverflow:
+I corrected the error that I ran into in classwork and I think I got the padding function working. Unfortunately, when I try to verify the array, it seems to suggest that my big-endian 1 is being represented as a negative number, -128 specifically. I think this may just be an issue with representation and not a deeper flaw, considering this chain on StackOverflow:
 
 https://stackoverflow.com/questions/18754230/how-a-positive-value-becomes-negative-after-casting-byte-in-java
 
