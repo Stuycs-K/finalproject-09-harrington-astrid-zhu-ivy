@@ -9,30 +9,48 @@
 class PreProcess{
     public static void main(String[] args){
         String input = "hello world";
-        byte[] bytes = preProcess(input);
-        byte[][] parsed = parsing(bytes);
+        int[] bits = preProcess(input);
+        //byte[][] parsed = parsing(bytes);
+        int[][] parsed = parsing(bits);
         //printDoubleArray(parsed);
     }
 
-    public static byte[] preProcess(String input){
+    public static int[] preProcess(String input){
         byte[] bytes = input.getBytes();
+        int[] bits = new int[8*bytes.length];
+
+        for (int i = 0; i < bytes.length; i++){
+            int b = (int) bytes[i];
+            String binary = Integer.toBinaryString(b);
+            binary = "0".repeat((8-binary.length()))+binary;
+            for (int j = 0; j < 8; j++){
+                if (binary.substring(j,j+1).equals("0")){
+                    bits[i*8+j] = 0;
+                }
+                else{
+                    bits[i*8+j] = 1;
+                }
+
+            }
+        }
+
         int length = bytes.length * 8; // # of digits required for message representation in binary
-        bytes = append((byte)128, bytes); // appends big endian 1
+        bits = append(128, bits); // appends big endian 1
         //printArray(bytes);
         int zeroBitsNeeded = 512 - ((length + 8 + 64) % 512);
-        byte[] zeroPadding = new byte[zeroBitsNeeded / 8];
-        bytes = combine(bytes,zeroPadding);
+        int[] zeroPadding = new int[zeroBitsNeeded];
+        bits = combine(bits,zeroPadding);
 
         //THIS IS THE PROBLEM: must append 64 bits!!!
-        byte[] length64Bit = make64Bit(length);
-        bytes = combine(bytes,length64Bit);
+        int[] length64Bit = make64Bit(length);
+        bits = combine(bits,length64Bit);
 
         //DEBUGGING
-        printArray(bytes);
-        System.out.println("Length: " + bytes.length);
-        System.out.println("Zeros: " + countZeros(bytes));
+        //printArray(bits);
+        //System.out.println("Length: " + bits.length);
+        //System.out.println("Zeros: " + countZeros(bits));
 
-        return bytes;
+        return bits;
     }
     
     public static byte[][] parsing(byte[] bytes){
@@ -43,15 +61,12 @@ class PreProcess{
         return(parsed);
     }
 
-    public static void printArray(byte[] array){
-        System.out.print("[");
-        for (int i = 0; i < array.length; i++){
-            System.out.print(array[i]);
-            if (i < array.length - 1){
-                System.out.print(", ");
-            }
+    public static int[][] parsing(int[] bits){
+        int[][] parsed = new int[bits.length / 512][512];
+        for (int i = 0; i < bits.length; i++){
+            parsed[i / (512)][i % (512)] = bits[i];
         }
-        System.out.println("]");
+        return(parsed);
     }
 
     public static byte[] append(byte b, byte[] array){
@@ -61,6 +76,25 @@ class PreProcess{
         }
         bytes[array.length] = b;
         return(bytes);
+    }
+
+    public static int[] append(int intByte, int[] array){
+        int[] bits = new int[array.length + 8];
+        for (int i = 0; i < array.length; i++){
+            bits[i] = array[i];
+        }
+        String binary = Integer.toBinaryString(intByte);
+        binary = "0".repeat((8-binary.length()))+binary;
+        for (int j = 0; j < 8; j++){
+                if (binary.substring(j,j+1).equals("0")){
+                    bits[array.length+j] = 0;
+                }
+                else{
+                    bits[array.length+j] = 1;
+                }
+
+            }
+        return(bits);
     }
 
     public static byte[] combine(byte[] bytes1, byte[] bytes2){
@@ -74,6 +108,17 @@ class PreProcess{
         return(bytes);
     }
 
+    public static int[] combine(int[] bits1, int[] bits2){
+        int[] bits = new int[bits1.length + bits2.length];
+        for (int i = 0; i < bits1.length; i++){
+            bits[i] = bits1[i];
+        }
+        for (int i = bits1.length; i < bits1.length + bits2.length; i++){
+            bits[i] = bits2[i - bits1.length];
+        }
+        return(bits);
+    }
+
     public static int countZeros(byte[] bytes){
         int count = 0;
         for (int i = 0; i < bytes.length; i++){
@@ -84,7 +129,17 @@ class PreProcess{
         return(count);
     }
 
-    public static byte[] make64Bit(int k){
+    public static int countZeros(int[] bits){
+        int count = 0;
+        for (int i = 0; i < bits.length; i++){
+            if (bits[i] == 0){
+                count++;
+            }
+        }
+        return(count);
+    }
+
+    /*public static byte[] make64Bit(int k){
         byte[] bytes = new byte[8];
         int i = 1;
         while (k > 0){
@@ -92,9 +147,53 @@ class PreProcess{
             k /= 256;
         }
         return(bytes);
+    }*/
+
+    public static int[] make64Bit(int k){
+        int[] bits = new int[64];
+        String binary = Integer.toBinaryString(k);
+        for (int i = 64 - binary.length(); i < 64; i++){
+            if (binary.substring(i - (64 - binary.length()),i - (64-binary.length())+1).equals("1")){
+                bits[i] = 1;
+            }
+            else{
+                bits[i] = 0;
+            }
+        }
+        return(bits);
+    }
+
+    public static void printArray(byte[] array){
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++){
+            System.out.print(array[i]);
+            if (i < array.length - 1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+    public static void printArray(int[] array){
+        System.out.print("[");
+        for (int i = 0; i < array.length; i++){
+            System.out.print(array[i]);
+            if (i < array.length - 1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
     }
 
     public static void printDoubleArray(byte[][] array){
+        System.out.println("BEGIN DOUBLE ARRAY");
+        for (int i = 0; i < array.length; i++){
+            printArray(array[i]);
+        }
+        System.out.println("END DOUBLE ARRAY");
+    }
+
+    public static void printDoubleArray(int[][] array){
         System.out.println("BEGIN DOUBLE ARRAY");
         for (int i = 0; i < array.length; i++){
             printArray(array[i]);
