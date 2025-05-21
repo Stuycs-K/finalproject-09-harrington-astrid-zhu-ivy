@@ -1,6 +1,9 @@
 import java.util.Arrays;
 
 class Transform{
+  // global variables
+  public static int h0, h1, h2, h3, h4, h5, h6, h7;
+    
   public static void main(String[] args){
     String input = "hello world";
     String w1 = "01101111001000000111011101101111";
@@ -56,6 +59,23 @@ class Transform{
             "10100010110101000110011110011010 00000001000011111001100101111011\n" + //
             "11111100000101110100111100001010 11000010110000101110101100010110\n";
     System.out.println(res.equals(result));
+
+    // Step 6 - Compression
+
+    h0 = Integer.parseInt("01101010000010011110011001100111", 2);
+    // h1 = Integer.parseInt("10111011011001111010111010000101", 2);
+    h2 = Integer.parseInt("00111100011011101111001101110010", 2);
+    // h3 = Integer.parseInt("10100101010011111111010100111010", 2);
+    h4 = Integer.parseInt("01010001000011100101001001111111", 2);
+    // h5 = Integer.parseInt("10011011000001010110100010001100", 2);
+    h6 = Integer.parseInt("00011111100000111101100110101011", 2);
+    h7 = Integer.parseInt("01011011111000001100110100011001", 2);
+
+    h1 = (int) (3144134277L % (long) Math.pow(2, 32));
+    h3 = (int) (2773480762L % (long) Math.pow(2, 32));
+    h5 = (int) (2600822924L % (long) Math.pow(2, 32));
+
+    compression();
   }
 
   public static int rightshift(int n, int d){
@@ -70,8 +90,22 @@ class Transform{
       int s1 = Integer.rotateRight(n, 17) ^ Integer.rotateRight(n, 19) ^ rightshift(n, 10);
       w[i] = w[i-16] + s0 + w[i-7] + s1;
     }
-    System.out.println(w[16]); // mod 2^32 ?
-    System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
+    // System.out.println(w[16]); // mod 2^32 ?
+    // System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
+  }
+
+  public static void compression(){
+    int a, b, c, d, e, f, g, h;
+    a = h0;
+    b = h1;
+    c = h2;
+    d = h3;
+    e = h4; 
+    f = h5;
+    g = h6;
+    h = h7;
+    int s1 = Integer.rotateRight(e, 6) ^ Integer.rotateRight(e, 11) ^ Integer.rotateRight(e, 25);
+    System.out.println(Integer.toBinaryString(s1));
   }
 
   public static String printBin(int[] w){
