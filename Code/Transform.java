@@ -3,7 +3,6 @@ import java.util.Arrays;
 class Transform{
   // global variables
   public static int h0, h1, h2, h3, h4, h5, h6, h7;
-<<<<<<< HEAD
   public static int[] k = { 
    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
@@ -16,23 +15,6 @@ class Transform{
     
   public static void main(String[] args){
     String input = "hello world";
-=======
-    
-  public static void main(String[] args){
-    String input = "hello world";
-    String w1 = "01101111001000000111011101101111";
-    // w[1] = (byte) Integer.parseInt(w1, 2);
-    int n = Integer.parseInt(w1, 2);;
-    System.out.println(Integer.toBinaryString(n));
-    // System.out.println(Integer.toBinaryString(Integer.rotateRight(n, 7)));
-    // System.out.println("11011110110111100100000011101110");
-    // System.out.println(Integer.toBinaryString(Integer.rotateRight(n, 18)));
-    // System.out.println("00011101110110111101101111001000");
-    // System.out.println(Integer.toBinaryString(rightshift(n, 3)));
-
-    int s0 = Integer.rotateRight(n, 7) ^ Integer.rotateRight(n, 18) ^ rightshift(n, 3);
-    System.out.println(Integer.toBinaryString(s0).equals("11001110111000011001010111001011"));
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
     int[] w = new int[64];
     w[0] = Integer.parseInt("01101000011001010110110001101100", 2);
     w[1] = Integer.parseInt("01101111001000000111011101101111", 2);
@@ -73,11 +55,7 @@ class Transform{
             "10011000111100001100001101101111 01110010000101111011100000011110\n" + //
             "10100010110101000110011110011010 00000001000011111001100101111011\n" + //
             "11111100000101110100111100001010 11000010110000101110101100010110\n";
-<<<<<<< HEAD
     // System.out.println(res.equals(result));
-=======
-    System.out.println(res.equals(result));
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
 
     // Step 6 - Compression
 
@@ -93,12 +71,7 @@ class Transform{
     h1 = (int) (3144134277L % (long) Math.pow(2, 32));
     h3 = (int) (2773480762L % (long) Math.pow(2, 32));
     h5 = (int) (2600822924L % (long) Math.pow(2, 32));
-
-<<<<<<< HEAD
     compression(k, w);
-=======
-    compression();
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
   }
 
   public static int rightshift(int n, int d){
@@ -117,11 +90,7 @@ class Transform{
     // System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
   }
 
-<<<<<<< HEAD
   public static void compression(int[] k, int[] w){
-=======
-  public static void compression(int[] w, int[] k){
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
     int a, b, c, d, e, f, g, h;
     a = h0;
     b = h1;
@@ -141,16 +110,12 @@ class Transform{
       int temp2 = s0 + majority;
       h = g;
       g = f;
-<<<<<<< HEAD
       f = e;
-=======
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
       e = d + temp1;
       d = c;
       c = b;
       b = a;
       a = temp1 + temp2;
-<<<<<<< HEAD
       // System.out.println(Integer.toBinaryString(a));
     }
     // System.out.println(Integer.toBinaryString(a));
@@ -165,9 +130,6 @@ class Transform{
     String hash = "" + Integer.toHexString(h0) + Integer.toHexString(h1) + Integer.toHexString(h2) + Integer.toHexString(h3) 
     + Integer.toHexString(h4) + Integer.toHexString(h5) + Integer.toHexString(h6) + Integer.toHexString(h7);
     System.out.println(hash);
-=======
-    }
->>>>>>> dad8497220ff9849b4dce608872b544c7a8a5e37
   }
 
   public static String printBin(int[] w){
