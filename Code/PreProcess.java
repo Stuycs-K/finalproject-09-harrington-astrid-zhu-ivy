@@ -12,7 +12,12 @@ class PreProcess{
         int[] bits = preProcess(input);
         //byte[][] parsed = parsing(bytes);
         int[][] parsed = parsing(bits);
-        //printDoubleArray(parsed);
+        printDoubleArray(parsed);
+
+        Make32BitWords rearranger = new Make32BitWords();
+
+        int[][] thirtyTwoBitWords = rearranger.make32BitWords(parsed);
+        printDoubleArray(thirtyTwoBitWords);
     }
 
     public static int[] preProcess(String input){
