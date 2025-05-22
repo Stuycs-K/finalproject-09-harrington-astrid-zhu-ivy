@@ -32,3 +32,7 @@ Step 5 is working! I checked with the example in the github/liangtengyu website.
 I'm looking at the step where you have to right rotate and add and perform bitwise operations on letters a to h. It doesn't seem too different from the previous step, but I'm having trouble with the integer limits since these numbers are more than 2^31.
 
 Need to make array of k (first few digits of cube roots of primes).
+
+### 2025-05-22 - Finished turning into hash
+I figured out that I just have to initialize the k array with numbers from online instead of writing another function to calculate everything. Now, I've finished step 7: adding a to h0, b to h1, etc. 
+All that's left to do is to take the h0 to h7 and concatanate them to form the final hash! This works for hello world, but we haven't tried strings that take up more than 512 bits.
