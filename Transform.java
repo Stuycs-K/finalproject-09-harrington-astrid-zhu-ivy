@@ -94,7 +94,7 @@ class Transform{
     // System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
   }
 
-  public static void compression(){
+  public static void compression(int[] w, int[] k){
     int a, b, c, d, e, f, g, h;
     a = h0;
     b = h1;
@@ -104,8 +104,22 @@ class Transform{
     f = h5;
     g = h6;
     h = h7;
-    int s1 = Integer.rotateRight(e, 6) ^ Integer.rotateRight(e, 11) ^ Integer.rotateRight(e, 25);
-    System.out.println(Integer.toBinaryString(s1));
+    for (int i = 0; i < 64; i++){
+      int s1 = Integer.rotateRight(e, 6) ^ Integer.rotateRight(e, 11) ^ Integer.rotateRight(e, 25);
+      int choice = (e & f) ^ ((~e) & g); 
+      int temp1 = h + s1 + choice + k[i] + w[i];
+
+      int s0 = Integer.rotateRight(a, 2) ^ Integer.rotateRight(a, 13) ^ Integer.rotateRight(a, 22);
+      int majority = (a & b) ^ (a & c) ^ (b & c);
+      int temp2 = s0 + majority;
+      h = g;
+      g = f;
+      e = d + temp1;
+      d = c;
+      c = b;
+      b = a;
+      a = temp1 + temp2;
+    }
   }
 
   public static String printBin(int[] w){

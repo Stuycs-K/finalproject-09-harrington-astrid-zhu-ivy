@@ -27,3 +27,8 @@ I worked on it a bit at home, and right rotate and right shift are now working! 
 I've finished the subfunctions needed to transform the message into meesage schedule. It's harder to see if my function is right when everything is ones and zeroes and there are 64 cells in the array. It doesn't seem to work, but it has worked on individual cases, so I'll have to check that.
 
 Step 5 is working! I checked with the example in the github/liangtengyu website. Now, I'll start working on step 6.
+
+### 2025-05-21 - Working on changing a to f
+I'm looking at the step where you have to right rotate and add and perform bitwise operations on letters a to h. It doesn't seem too different from the previous step, but I'm having trouble with the integer limits since these numbers are more than 2^31.
+
+Need to make array of k (first few digits of cube roots of primes).
