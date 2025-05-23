@@ -8,7 +8,7 @@
 
 class PreProcess{
     public static void main(String[] args){
-        String input = "hello world";
+        /*String input = "hello world";
         int[] bits = preProcess(input);
         //byte[][] parsed = parsing(bytes);
         int[][] parsed = parsing(bits);
@@ -17,7 +17,7 @@ class PreProcess{
         Make32BitWords rearranger = new Make32BitWords();
 
         int[][] thirtyTwoBitWords = rearranger.make32BitWords(parsed);
-        printDoubleArray(thirtyTwoBitWords);
+        printDoubleArray(thirtyTwoBitWords);*/
     }
 
     public static int[] preProcess(String input){

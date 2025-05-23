@@ -11,7 +11,7 @@ class Make32BitWords{
             int thirtyTwoBitWord = 0;
             for (int col = 0; col <= bits[row].length; col++){
                 if (col % 32 == 0 && col != 0){
-                    System.out.println("modifying ans row " + row + " col "+ col/32);
+                    //System.out.println("modifying ans row " + row + " col "+ col/32);
                     
                     ans[row][col /32 - 1] = thirtyTwoBitWord;
                     thirtyTwoBitWord = 0;
