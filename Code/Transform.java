@@ -3,6 +3,7 @@ import java.util.Arrays;
 class Transform{
   // global variables
   public static int h0, h1, h2, h3, h4, h5, h6, h7;
+  
   public static int[] k = { 
    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
@@ -57,20 +58,7 @@ class Transform{
             "11111100000101110100111100001010 11000010110000101110101100010110\n";
     // System.out.println(res.equals(result));
 
-    // Step 6 - Compression
-
-    h0 = Integer.parseInt("01101010000010011110011001100111", 2);
-    // h1 = Integer.parseInt("10111011011001111010111010000101", 2);
-    h2 = Integer.parseInt("00111100011011101111001101110010", 2);
-    // h3 = Integer.parseInt("10100101010011111111010100111010", 2);
-    h4 = Integer.parseInt("01010001000011100101001001111111", 2);
-    // h5 = Integer.parseInt("10011011000001010110100010001100", 2);
-    h6 = Integer.parseInt("00011111100000111101100110101011", 2);
-    h7 = Integer.parseInt("01011011111000001100110100011001", 2);
-
-    h1 = (int) (3144134277L % (long) Math.pow(2, 32));
-    h3 = (int) (2773480762L % (long) Math.pow(2, 32));
-    h5 = (int) (2600822924L % (long) Math.pow(2, 32));
+    initializeH();
     compression(k, w);
   }
 
@@ -86,11 +74,9 @@ class Transform{
       int s1 = Integer.rotateRight(n, 17) ^ Integer.rotateRight(n, 19) ^ rightshift(n, 10);
       w[i] = w[i-16] + s0 + w[i-7] + s1;
     }
-    // System.out.println(w[16]); // mod 2^32 ?
-    // System.out.println(Integer.parseInt("00110111010001110000001000110111", 2));
   }
 
-  public static void compression(int[] k, int[] w){
+  public static String compression(int[] k, int[] w){
     int a, b, c, d, e, f, g, h;
     a = h0;
     b = h1;
@@ -116,9 +102,7 @@ class Transform{
       c = b;
       b = a;
       a = temp1 + temp2;
-      // System.out.println(Integer.toBinaryString(a));
     }
-    // System.out.println(Integer.toBinaryString(a));
     h0 += a;
     h1 += b;
     h2 += c;
@@ -129,7 +113,8 @@ class Transform{
     h7 += h;
     String hash = "" + Integer.toHexString(h0) + Integer.toHexString(h1) + Integer.toHexString(h2) + Integer.toHexString(h3) 
     + Integer.toHexString(h4) + Integer.toHexString(h5) + Integer.toHexString(h6) + Integer.toHexString(h7);
-    System.out.println(hash);
+    // System.out.println(hash);
+    return hash;
   }
 
   public static String printBin(int[] w){
@@ -144,5 +129,20 @@ class Transform{
       str += s1 + " " + s2 + "\n";
     }
     return str;
+  }
+
+  public static void initializeH(){
+    h0 = Integer.parseInt("01101010000010011110011001100111", 2);
+    // h1 = Integer.parseInt("10111011011001111010111010000101", 2);
+    h2 = Integer.parseInt("00111100011011101111001101110010", 2);
+    // h3 = Integer.parseInt("10100101010011111111010100111010", 2);
+    h4 = Integer.parseInt("01010001000011100101001001111111", 2);
+    // h5 = Integer.parseInt("10011011000001010110100010001100", 2);
+    h6 = Integer.parseInt("00011111100000111101100110101011", 2);
+    h7 = Integer.parseInt("01011011111000001100110100011001", 2);
+
+    h1 = (int) (3144134277L % (long) Math.pow(2, 32));
+    h3 = (int) (2773480762L % (long) Math.pow(2, 32));
+    h5 = (int) (2600822924L % (long) Math.pow(2, 32));
   }
 }

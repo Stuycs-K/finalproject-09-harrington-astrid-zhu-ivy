@@ -36,3 +36,8 @@ Need to make array of k (first few digits of cube roots of primes).
 ### 2025-05-22 - Finished turning into hash
 I figured out that I just have to initialize the k array with numbers from online instead of writing another function to calculate everything. Now, I've finished step 7: adding a to h0, b to h1, etc. 
 All that's left to do is to take the h0 to h7 and concatanate them to form the final hash! This works for hello world, but we haven't tried strings that take up more than 512 bits.
+
+### 2025-05-23 - Working on combining
+Astrid and I finished our individual portions, so now we just have to work on putting it together. I need to see how having a longer message to encode will change the process.
+
+Finish combining everything!
