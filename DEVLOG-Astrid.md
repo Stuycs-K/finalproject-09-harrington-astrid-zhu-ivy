@@ -44,3 +44,9 @@ I was absent from class today for a doctor's appointment, so I was only able to 
 This required that I rewrite most of the helper functions I had been using. More importantly, I made use of the Integer.toBinaryString() function to find the binary values of certain ints. This function does not always return Strings of length 8, requiring some troubleshooting to ensure that the bits were inserted in the correct location in the array.
 
 At this point, I believe both the preprocessing and parsing functions are working.
+
+### 2025-05-22 - Wrote Make32BitWords.java and added preprocessing to Sha256.java
+
+During class today, Ivy and I started to discuss how we would merge our two halves of the sha256 algorithm. This led me to write the Make32BitWords.java function to ensure that the preprocessed message was in the right format for the rest of the algorithm.
+
+Then, we created a Sha256 class for the overall sha256 algorithm. At home, I added the preprocessing functions to Sha256 and made sure they were working.
