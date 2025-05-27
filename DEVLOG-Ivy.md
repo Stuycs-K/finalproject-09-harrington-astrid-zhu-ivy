@@ -41,3 +41,6 @@ All that's left to do is to take the h0 to h7 and concatanate them to form the f
 Astrid and I finished our individual portions, so now we just have to work on putting it together. I need to see how having a longer message to encode will change the process.
 
 Finish combining everything!
+
+### 2025-05-27 - Makefile
+We're working on running our program from the terminal and with the makefile. Makefile is working! We'll be working on the proposal doc now.
