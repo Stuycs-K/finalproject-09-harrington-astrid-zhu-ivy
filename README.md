@@ -27,3 +27,5 @@ https://www.movable-type.co.uk/scripts/sha256.html
 https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md
 
 https://stackoverflow.com/questions/18754230/how-a-positive-value-becomes-negative-after-casting-byte-in-java
+
+https://sha256algorithm.com/
