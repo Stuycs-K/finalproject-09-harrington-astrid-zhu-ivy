@@ -50,3 +50,7 @@ At this point, I believe both the preprocessing and parsing functions are workin
 During class today, Ivy and I started to discuss how we would merge our two halves of the sha256 algorithm. This led me to write the Make32BitWords.java function to ensure that the preprocessed message was in the right format for the rest of the algorithm.
 
 Then, we created a Sha256 class for the overall sha256 algorithm. At home, I added the preprocessing functions to Sha256 and made sure they were working.
+
+### 2025-05-27 - Tested from CLI and wrote makefile
+
+After encountering many issues with running the makefile outside of the Code directory, we eventually decided to move the makefile into the Code directory. We also modified error messages from parseArgs() to more accurately reflect solutions to problems. Our makefile is now working! Going forward, we are going to finalize PROPOSAL.md/README.md and start work on Presenatation.md.
