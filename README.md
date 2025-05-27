@@ -7,7 +7,7 @@ Astrid Harrington and Ivy Zhu
        
 ### Project Description:
 
-Explain what is this project. (CHANGE THIS!!!!!)
+This project is a replica of the sha-256 hash algorithm written in Java.
   
 ### Instructions:
 
@@ -16,4 +16,3 @@ How does the user interact with this program? (CHANGE THIS!!!!!)
 
 ### Resources/ References:
 
-list here(CHANGE THIS!!!!!)
