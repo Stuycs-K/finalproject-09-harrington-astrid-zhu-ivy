@@ -19,4 +19,5 @@ We will break down the project into two parts, preprocessing and transform. Prep
 # Intended pacing:
 
 First week: finish sha256.
+
 Second week: write Presentation.md and record video.
