@@ -44,3 +44,6 @@ Finish combining everything!
 
 ### 2025-05-27 - Makefile
 We're working on running our program from the terminal and with the makefile. Makefile is working! We'll be working on the proposal doc now.
+
+### 2025-05-28 - README
+I added instructions on how to run our program in the README. We'll work on presentation.md and brainstorm things to include in our video.
