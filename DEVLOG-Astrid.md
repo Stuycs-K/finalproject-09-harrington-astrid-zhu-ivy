@@ -53,4 +53,8 @@ Then, we created a Sha256 class for the overall sha256 algorithm. At home, I add
 
 ### 2025-05-27 - Tested from CLI and wrote makefile
 
-After encountering many issues with running the makefile outside of the Code directory, we eventually decided to move the makefile into the Code directory. We also modified error messages from parseArgs() to more accurately reflect solutions to problems. Our makefile is now working! Going forward, we are going to finalize PROPOSAL.md/README.md and start work on Presenatation.md.
+After encountering many issues with running the makefile outside of the Code directory, we eventually decided to move the makefile into the Code directory. We also modified error messages from parseArgs() to more accurately reflect solutions to problems. Our makefile is now working! Going forward, we are going to finalize PROPOSAL.md/README.md and start work on PRESENTATION.md.
+
+### 2025-05-28 - Finished proposal/readme and started work on presentation
+
+Today, Ivy and I worked together on finalizing PROPOSAL.md and README.md. We also created a file for PRESENTATION.md and intend to start work on it.
