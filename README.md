@@ -13,7 +13,7 @@ This project is a replica of the sha-256 hash algorithm written in Java.
 
 To run the program, cd into the directory Code. In the terminal you can input the string you want to get the hash from with $make run ARGS=input_string
 
-If you want to input a string with spaces, use ARGS="\"input_string\""
+If you want to input a string with spaces, use ARGS="\\"input_string\\""
 
 The user inputs a string that they want to encode with sha256 and receive the hashed string printed in the terminal.
 
