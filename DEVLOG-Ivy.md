@@ -50,3 +50,5 @@ I added instructions on how to run our program in the README. We'll work on pres
 
 ### 2025-05-29 - Research for video
 Astrid and I are combing the internet for weaknesses and improvements for sha256. We found that sha256 was created after sha1 since sha1 was deemed unsafe since people were able to find collisions. We're planning on talking a bit about the history so that the viewer can understand why there are multiple sha algorithms and hence why three groups are working on sha projects. 
+
+I was concerned that since there are three groups doing sha, and the minimum video length is 10 minutes, 30 minutes might be a bit much for explaining sha. Mr. K said that was a fair concern and that we should figure out how much time is needed to show off our individual programs, then split up the rest of the things we want to cover.
