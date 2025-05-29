@@ -2,14 +2,26 @@
 
 ## Overview
 
-structure of sha (how we broke it down): preprocessing & transofmr
+structure of sha (how we broke it down): preprocessing & transform
 
 ## Weaknesses
 
 - energy/time required to hash
 - length extension attack (need to research more)
 - brute force/rainbow tables (safer to files)
-- potential for collisions (NOTE: not a practical concern)
+
+maybe provide some examples of rainbow tables? if we can find
+
+- potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
+  
+1993: sha1
+  
+2001: sha256
+
+way to generate sha1 collision: https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html
+
+NO KNOWN sha256 COLLISIONS!!!
+
 - while very secure rn, future innovation (ie. quantum computing?) could make it less so.
 
 ## Improvements
