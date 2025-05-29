@@ -47,3 +47,6 @@ We're working on running our program from the terminal and with the makefile. Ma
 
 ### 2025-05-28 - README
 I added instructions on how to run our program in the README. We'll work on presentation.md and brainstorm things to include in our video.
+
+### 2025-05-29 - Research for video
+Astrid and I are combing the internet for weaknesses and improvements for sha256. We found that sha256 was created after sha1 since sha1 was deemed unsafe since people were able to find collisions. We're planning on talking a bit about the history so that the viewer can understand why there are multiple sha algorithms and hence why three groups are working on sha projects. 
