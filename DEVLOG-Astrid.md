@@ -58,3 +58,7 @@ After encountering many issues with running the makefile outside of the Code dir
 ### 2025-05-28 - Finished proposal/readme and started work on presentation
 
 Today, Ivy and I worked together on finalizing PROPOSAL.md and README.md. We also created a file for PRESENTATION.md and intend to start work on it.
+
+### 2025-05-29 - Worked more on presentation
+
+We worked more on brainstorming for presentation. We fleshed out some ideas for improvements of sha256, and we also started researching some weaknesses. We made some good progress, although more research is needed.
