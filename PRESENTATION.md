@@ -8,6 +8,9 @@ structure of sha (how we broke it down): preprocessing & transform
 
 - energy/time required to hash
 - length extension attack (need to research more)
+
+https://kerkour.com/sha256-length-extension-attacks: smth about sha256 length extension. unclear whether sha256 is actually vulnerable, but sha1 definitely is.
+
 - brute force/rainbow tables (safer to files)
 
 maybe provide some examples of rainbow tables? if we can find
