@@ -6,6 +6,12 @@ structure of sha (how we broke it down): preprocessing & transofmr
 
 ## Weaknesses
 
+- energy/time required to hash
+- length extension attack (need to research more)
+- brute force/rainbow tables (safer to files)
+- potential for collisions (NOTE: not a practical concern)
+- while very secure rn, future innovation (ie. quantum computing?) could make it less so.
+
 ## Improvements
 
 - why not use diff initial round constants/hash values for diff systems? then rainbow tables wouldn't work
