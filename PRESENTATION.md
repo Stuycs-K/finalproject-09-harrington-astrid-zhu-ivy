@@ -6,16 +6,25 @@ structure of sha (how we broke it down): preprocessing & transform
 
 ## Weaknesses
 
-- energy/time required to hash
-- length extension attack (need to research more)
+### Energy/time required to hash
 
-https://kerkour.com/sha256-length-extension-attacks: smth about sha256 length extension. unclear whether sha256 is actually vulnerable, but sha1 definitely is.
+### Length Extension Attack
 
-- brute force/rainbow tables (safer to files)
+Length extension attacks are useful in a scenario in which hashed messages are appended to a secret key and sent. For example, MESSAGE1 "hello world" and SECRETKEY "key" could be concatenated to form the new string "keyhello world" (SECRETKEY + MESSAGE1). Then this string could be hashed and sent alongside the message ("hello world"), confirming that the message was sent by a person in possession of SECRETKEY.
+
+A hash is vulnerable to a length extension attack if given MESSAGE1 and the hash of SECRETKEY + MESSAGE1, the hash of SECRETKEY + MESSAGE1 + MESSAGE2 can be determined. This would allow an attacker to send additional malicious text (MESSAGE2) appended to MESSAGE1 without actually knowing SECRETKEY. 
+
+Sha256 is somewhat [vulnerable](https://kerkour.com/sha256-length-extension-attacks) to length extension attacks. Sha256 works by performing successive computations based on 512-bit chunks created by the message: it moves forward, not backward. In an ideal case, the final hash of SECRETKEY + MESSAGE1 would be an intermediate step along the way to hashing SECRETKEY + MESSAGE1 + MESSAGE2, and it could be used to compute the second hash.
+
+In reality, this is not entirely true. Because of sha256's preprocessing and padding functions, SECRETKEY + MESSAGE1 is padded with an extra 1, lots of 0s, and the length in bits of SECRETKEY + MESSAGE1. Therefore, in order to append MESSAGE2 to the hash (and send the matching plaintext message), an attacker would need to know the length of SECRETKEY. This would tell them exactly how SECRETKEY + MESSAGE1 was preprocessed and padded, and they could reverse those processes to find the plaintext message PADDING that would correspond to the padding. Then they could preprocess and pad MESSAGE2 (substituting the length of SECRETKEY + MESSAGE1 + PADDING + MESSAGE2 for the length of MESSAGE2 in the process) before continuing to hash it. Thus, the attacker would need to send that hash alongside the plaintext message SECRETKEY + MESSAGE1 + PADDING + MESSAGE2, making it somewhat less controlled. Regardless, there is some vulnerability.
+
+This would be particularly dangerous in a case when a computer receives and reads the message if the hash matches the hash of SECRETKEY + PLAINTEXT. A human could probably figure out that the message was tampered with, but a computer might indiscriminately read the message and run code embedded within it if it simply recognizes the SECRETKEY. 
+
+### Brute force/rainbow tables (safer to files)
 
 maybe provide some examples of rainbow tables? if we can find
 
-- potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
+### potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
   
 1993: sha1
   
@@ -25,7 +34,7 @@ way to generate sha1 collision: https://security.googleblog.com/2017/02/announci
 
 NO KNOWN sha256 COLLISIONS!!!
 
-- while very secure rn, future innovation (ie. quantum computing?) could make it less so.
+### very secure rn, but future innovation (ie. quantum computing?) could make it less so.
 
 ## Improvements
 
