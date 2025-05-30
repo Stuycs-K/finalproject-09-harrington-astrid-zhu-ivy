@@ -8,6 +8,8 @@ structure of sha (how we broke it down): preprocessing & transform
 
 ### Energy/time required to hash
 
+sha256 is slower and more [computationally intensive](https://nordvpn.com/blog/sha-256/) than other comparable hashes (like MD5).
+
 ### Length Extension Attack
 
 Length extension attacks are useful in a scenario in which hashed messages are appended to a secret key and sent. For example, MESSAGE1 "hello world" and SECRETKEY "key" could be concatenated to form the new string "keyhello world" (SECRETKEY + MESSAGE1). Then this string could be hashed and sent alongside the message ("hello world"), confirming that the message was sent by a person in possession of SECRETKEY.
@@ -18,11 +20,13 @@ Sha256 is somewhat [vulnerable](https://kerkour.com/sha256-length-extension-atta
 
 In reality, this is not entirely true. Because of sha256's preprocessing and padding functions, SECRETKEY + MESSAGE1 is padded with an extra 1, lots of 0s, and the length in bits of SECRETKEY + MESSAGE1. Therefore, in order to append MESSAGE2 to the hash (and send the matching plaintext message), an attacker would need to know the length of SECRETKEY. This would tell them exactly how SECRETKEY + MESSAGE1 was preprocessed and padded, and they could reverse those processes to find the plaintext message PADDING that would correspond to the padding. Then they could preprocess and pad MESSAGE2 (substituting the length of SECRETKEY + MESSAGE1 + PADDING + MESSAGE2 for the length of MESSAGE2 in the process) before continuing to hash it. Thus, the attacker would need to send that hash alongside the plaintext message SECRETKEY + MESSAGE1 + PADDING + MESSAGE2, making it somewhat less controlled. Regardless, there is some vulnerability.
 
-This would be particularly dangerous in a case when a computer receives and reads the message if the hash matches the hash of SECRETKEY + PLAINTEXT. A human could probably figure out that the message was tampered with, but a computer might indiscriminately read the message and run code embedded within it if it simply recognizes the SECRETKEY. 
+This would be particularly dangerous in a case when a computer receives and reads the message. A human could probably figure out that the message was tampered with, but a computer might indiscriminately read the message and run code embedded within it if it recognizes the SECRETKEY. 
 
-### Brute force/rainbow tables (safer to files)
+### Brute force/rainbow tables
 
-maybe provide some examples of rainbow tables? if we can find
+Sha256 is a very popular hashing algorithm, so it has been explored by hackers in the past. Rainbow tables for common passwords exist, reducing the computational intensity of brute forcing hashed passwords. 
+
+This is only a concern for smaller messages like passwords: it would be near impossible to brute force a hashed file.
 
 ### potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
   
