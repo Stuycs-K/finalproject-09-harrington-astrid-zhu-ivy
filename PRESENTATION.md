@@ -28,17 +28,19 @@ Sha256 is a very popular hashing algorithm, so it has been explored by hackers i
 
 This is only a concern for smaller messages like passwords: it would be near impossible to brute force a hashed file.
 
-### potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
+### Potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
   
 1993: sha1
+
+But sha1 is insecure because hackers can find collisions. There is an [algorithm](https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html) to do so.
   
 2001: sha256
 
-way to generate sha1 collision: https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html
+Sha256 isn't invertible either, so there are collisions. However, due to the complexity of the algorithm (64 steps), no collisions have been found to this day!! Thus, potential for collisions is not a practical concern. In fact, it was the motivation for switching to sha256 in the first place.
 
-NO KNOWN sha256 COLLISIONS!!!
+### Future innovation
 
-### very secure rn, but future innovation (ie. quantum computing?) could make it less so.
+Any present-day algorithm could be vulnerable to future innovations. For instance, sha256 could be made insecure by [quantum computing](https://thequantuminsider.com/2025/01/19/researcher-bitcoin-will-evolve-to-meet-quantum-threat/), which could theoretically speed up the process of finding collisions.
 
 ## Improvements
 
