@@ -2,7 +2,16 @@
 
 ## Overview
 
-structure of sha (how we broke it down): preprocessing & transform
+Structure of sha256: Preprocessing and Transform
+
+### Preprocessing
+
+1. Convert the message into bits.
+2. Append a 1 to the end.
+3. Pad with zeros until the message is -64 mod 512 bits.
+4. Append a 64 bit integer representing the length of the message.
+
+### Transform
 
 ## Weaknesses
 
