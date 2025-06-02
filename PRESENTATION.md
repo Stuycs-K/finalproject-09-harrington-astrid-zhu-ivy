@@ -46,14 +46,24 @@ Any present-day algorithm could be vulnerable to future innovations. For instanc
 
 ### Making small changes to constants
 
-In the sha256 algorithm, round constants and hash values are hard-coded to certain values. The [hash values and round constants](https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md) are "the first 32 bits of the fractional parts of the square roots of the first 8 primes" and "the first 32 bits of the fractional parts of the cube roots of the first 64 primes" respectively. This raises a question: why don't different systems initialize sha256 with different hash values and round constants? This would render rainbow tables useless, and hackers would have to start fresh with every new system they encountered.
+In the sha256 algorithm, round constants and hash values are hard-coded to certain values. The [hash values and round constants](https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md) are "the first 32 bits of the fractional parts of the square roots of the first 8 primes" and "the first 32 bits of the fractional parts of the cube roots of the first 64 primes" respectively. This raises a question: why don't different systems initialize sha256 with different hash values and round constants? This would render rainbow tables useless while preserving the underlying structure of sha256, and hackers would have to start fresh with every new system they encountered.
 
-The downside of this is that if (for some reason) the hash values and round constants got lost, there would be no way to tell what they used to be (and no way to confirm if a password matches a hash). This is the benefit of having a standardized sha256 function for all systems.
+The downside of this is that if (for some reason) the hash values and round constants got lost, there would be no way to tell what they used to be (and no way to confirm if plaintext matches a hash). If sha256 were being used to hash passwords and this happened, everyone would get locked out of their accounts. This is the benefit of having a standardized sha256 function for all systems.
 
 ### Making small changes to the algorithm
 
-make small changes like instead of using the last 64 bits for the length, use them for length - 1. or some other transformation of length. (this wld also ruin rainbow tables)
-(maybe we don't do this b/c it's not standardized: ie. if you lose your system's values then everyone is locked out of their account.)
-### just using sha is less secure than adding pepper/salt!!
-### easy improvement: use more bits (ie. sha256 has 256 bits vs sha1 which only has 160.)
-### ways to optimize? (speed for large files)
+Small variations across different systems to sha256's execution that don't change its structure could increase security. For instance, instead of using the last 64 bits of the preprocessed message for the length, use them to encode length - 1. Then because of the avalanche effect, the entire hash would be dramatically changed. This would also ruin rainbow tables but would come with the same downside.
+
+### Peppers/salts
+
+Adding peppers or salts can make any hashing algorithm more secure by increasing the computational complexity of brute forcing a hash (and getting around common password lists like rockyou).
+
+### Use more bits
+
+One of the reasons why sha256 is so much more secure than sha1 is because it has 256 bits. In comparison, sha1 only has 160. Once again, this increases the computational complexity of brute forcing a hash. 
+
+But increasing computational complexity in this way has a disadvantage: it decreases the speed of sha256. This could be inconvenient when hashing large files (or a large number of files).
+
+### Optimizing speed
+
+Certain implementations of sha256 are faster than others, making them preferable. 
