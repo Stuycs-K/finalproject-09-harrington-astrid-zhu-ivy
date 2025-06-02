@@ -28,7 +28,7 @@ Sha256 is a very popular hashing algorithm, so it has been explored by hackers i
 
 This is only a concern for smaller messages like passwords: it would be near impossible to brute force a hashed file.
 
-### Potential for collisions (NOTE: not a practical concern. sha1 has a lot more collisions: hence sha256)
+### Potential for collisions 
   
 1993: sha1
 
@@ -36,7 +36,7 @@ But sha1 is insecure because hackers can find collisions. There is an [algorithm
   
 2001: sha256
 
-Sha256 isn't invertible either, so there are collisions. However, due to the complexity of the algorithm (64 steps), no collisions have been found to this day!! Thus, potential for collisions is not a practical concern. In fact, it was the motivation for switching to sha256 in the first place.
+Sha256 isn't invertible either, so there are collisions. However, due to the complexity of the algorithm (64 steps), no collisions have been found to this day!! Thus, potential for collisions is not currently a practical concern. In fact, it was the motivation for switching to sha256 in the first place.
 
 ### Future innovation
 
@@ -44,9 +44,16 @@ Any present-day algorithm could be vulnerable to future innovations. For instanc
 
 ## Improvements
 
-- why not use diff initial round constants/hash values for diff systems? then rainbow tables wouldn't work
-- make small changes like instead of using the last 64 bits for the length, use them for length - 1. or some other transformation of length. (this wld also ruin rainbow tables)
+### Making small changes to constants
+
+In the sha256 algorithm, round constants and hash values are hard-coded to certain values. The [hash values and round constants](https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md) are "the first 32 bits of the fractional parts of the square roots of the first 8 primes" and "the first 32 bits of the fractional parts of the cube roots of the first 64 primes" respectively. This raises a question: why don't different systems initialize sha256 with different hash values and round constants? This would render rainbow tables useless, and hackers would have to start fresh with every new system they encountered.
+
+The downside of this is that if (for some reason) the hash values and round constants got lost, there would be no way to tell what they used to be (and no way to confirm if a password matches a hash). This is the benefit of having a standardized sha256 function for all systems.
+
+### Making small changes to the algorithm
+
+make small changes like instead of using the last 64 bits for the length, use them for length - 1. or some other transformation of length. (this wld also ruin rainbow tables)
 (maybe we don't do this b/c it's not standardized: ie. if you lose your system's values then everyone is locked out of their account.)
-- just using sha is less secure than adding pepper/salt!!
-- easy improvement: use more bits (ie. sha256 has 256 bits vs sha1 which only has 160.)
-- ways to optimize? (speed for large files)
+### just using sha is less secure than adding pepper/salt!!
+### easy improvement: use more bits (ie. sha256 has 256 bits vs sha1 which only has 160.)
+### ways to optimize? (speed for large files)
