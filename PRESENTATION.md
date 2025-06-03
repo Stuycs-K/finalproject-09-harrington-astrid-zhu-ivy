@@ -41,7 +41,7 @@ In reality, this is not entirely true. Because of sha256's preprocessing and pad
 
 ie. INITIAL MESSAGE ("hello world") preprocessed & padded: 
 
-![image](https://github.com/user-attachments/assets/7e52ffee-2f26-4ef5-9490-66d00e33a200)
+![image](https://github.com/user-attachments/assets/38ecc087-ceed-403c-bc75-5416bff07a68)
 
 INITIAL MESSAGE extended:
 
