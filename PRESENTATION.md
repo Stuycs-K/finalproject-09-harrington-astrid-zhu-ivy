@@ -11,7 +11,17 @@ Structure of sha256: Preprocessing and Transform
 3. Pad with zeros until the message is -64 mod 512 bits.
 4. Append a 64 bit integer representing the length of the message.
 
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/ec14d4ba-15e8-43d2-aaef-e220bdc62c67" />
+
+
 ### Transform
+5. Form into array with 64 entries of 32 bit integers, called a message schedule
+6. Use binary operations, right shift, and right rotate to change the entries in the message schedule.
+<img width="732" alt="image" src="https://github.com/user-attachments/assets/c5cfd490-a9b5-4e3c-9ed7-529937b01179" />
+
+7. Change round constants and hash values
+8. Concatenate final values
+<img width="952" alt="image" src="https://github.com/user-attachments/assets/729874f2-3cb9-4226-a127-bd699adad3be" />
 
 ## Weaknesses
 
