@@ -39,6 +39,16 @@ Sha256 is somewhat [vulnerable](https://kerkour.com/sha256-length-extension-atta
 
 In reality, this is not entirely true. Because of sha256's preprocessing and padding functions, SECRETKEY + MESSAGE1 is padded with an extra 1, lots of 0s, and the length in bits of SECRETKEY + MESSAGE1. Therefore, in order to append MESSAGE2 to the hash (and send the matching plaintext message), an attacker would need to know the length of SECRETKEY. This would tell them exactly how SECRETKEY + MESSAGE1 was preprocessed and padded, and they could reverse those processes to find the plaintext message PADDING that would correspond to the padding. Then they could preprocess and pad MESSAGE2 (substituting the length of SECRETKEY + MESSAGE1 + PADDING + MESSAGE2 for the length of MESSAGE2 in the process) before continuing to hash it. Thus, the attacker would need to send that hash alongside the plaintext message SECRETKEY + MESSAGE1 + PADDING + MESSAGE2, making it somewhat less controlled. Regardless, there is some vulnerability.
 
+ie. INITIAL MESSAGE ("hello world") preprocessed & padded: 
+
+![image](https://github.com/user-attachments/assets/7e52ffee-2f26-4ef5-9490-66d00e33a200)
+
+INITIAL MESSAGE extended:
+
+![image](https://github.com/user-attachments/assets/dc0d42c8-5668-482f-8b2c-12611985ea8c)
+
+
+
 This would be particularly dangerous in a case when a computer receives and reads the message. A human could probably figure out that the message was tampered with, but a computer might indiscriminately read the message and run code embedded within it if it recognizes the SECRETKEY. 
 
 ### Brute force/rainbow tables
