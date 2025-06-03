@@ -32,3 +32,11 @@ https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20
 https://stackoverflow.com/questions/18754230/how-a-positive-value-becomes-negative-after-casting-byte-in-java
 
 https://sha256algorithm.com/
+
+https://nordvpn.com/blog/sha-256/
+
+https://kerkour.com/sha256-length-extension-attacks
+
+https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html
+
+https://thequantuminsider.com/2025/01/19/researcher-bitcoin-will-evolve-to-meet-quantum-threat/
