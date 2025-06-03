@@ -70,3 +70,7 @@ I spent today trying to understand why sha256 is vulnerable to length extension 
 ### 2025-06-02 - Continued work on presentation
 
 In class, I finished the sections on weaknesses/improvements in PRESENTATION.md, and I wrote an outline of preprocessing. All that's left is the outline of the actual sha256 algorithm and we'll be ready to record the video.
+
+### 2025-06-03 - Finished presentation
+
+I added some diagrams for length extension attack while Ivy finished the outline of sha256 algorithm. Now we're ready to film!
