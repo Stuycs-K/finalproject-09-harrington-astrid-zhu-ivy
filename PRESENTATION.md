@@ -43,11 +43,9 @@ ie. INITIAL MESSAGE ("hello world") preprocessed & padded:
 
 ![image](https://github.com/user-attachments/assets/38ecc087-ceed-403c-bc75-5416bff07a68)
 
-INITIAL MESSAGE extended:
+INITIAL MESSAGE extended (by padding + INITIAL MESSAGE):
 
 ![image](https://github.com/user-attachments/assets/dc0d42c8-5668-482f-8b2c-12611985ea8c)
-
-
 
 This would be particularly dangerous in a case when a computer receives and reads the message. A human could probably figure out that the message was tampered with, but a computer might indiscriminately read the message and run code embedded within it if it recognizes the SECRETKEY. 
 
@@ -75,7 +73,7 @@ Any present-day algorithm could be vulnerable to future innovations. For instanc
 
 ### Making small changes to constants
 
-In the sha256 algorithm, round constants and hash values are hard-coded to certain values. The [hash values and round constants](https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md) are "the first 32 bits of the fractional parts of the square roots of the first 8 primes" and "the first 32 bits of the fractional parts of the cube roots of the first 64 primes" respectively. This raises a question: why don't different systems initialize sha256 with different hash values and round constants? This would render rainbow tables useless while preserving the underlying structure of sha256, and hackers would have to start fresh with every new system they encountered.
+In the sha256 algorithm, hash values and round constants are hard-coded to certain values. The [hash values and round constants](https://github.com/liangtengyu/wx_gzh_article/blob/master/How%20SHA-2%20Works%20Step-By-Step%20(SHA-256).md) are "the first 32 bits of the fractional parts of the square roots of the first 8 primes" and "the first 32 bits of the fractional parts of the cube roots of the first 64 primes" respectively. This raises a question: why don't different systems initialize sha256 with different hash values and round constants? This would render rainbow tables useless while preserving the underlying structure of sha256, and hackers would have to start fresh with every new system they encountered.
 
 The downside of this is that if (for some reason) the hash values and round constants got lost, there would be no way to tell what they used to be (and no way to confirm if plaintext matches a hash). If sha256 were being used to hash passwords and this happened, everyone would get locked out of their accounts. This is the benefit of having a standardized sha256 function for all systems.
 
