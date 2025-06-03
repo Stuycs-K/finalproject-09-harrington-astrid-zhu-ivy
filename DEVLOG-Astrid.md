@@ -62,3 +62,7 @@ Today, Ivy and I worked together on finalizing PROPOSAL.md and README.md. We als
 ### 2025-05-29 - Worked more on presentation
 
 We worked more on brainstorming for presentation. We fleshed out some ideas for improvements of sha256, and we also started researching some weaknesses. We made some good progress, although more research is needed.
+
+### 2025-06-02 - Continued work on presentation
+
+In class, I finished the sections on weaknesses/improvements in PRESENTATION.md, and I wrote an outline of preprocessing. All that's left is the outline of the actual sha256 algorithm and we'll be ready to record the video.
