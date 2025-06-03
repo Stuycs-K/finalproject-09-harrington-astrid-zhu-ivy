@@ -15,12 +15,12 @@ Structure of sha256: Preprocessing and Transform
 
 
 ### Transform
-5. Form into array with 64 entries of 32 bit integers, called a message schedule
+5. Form into array with 64 entries of 32 bit integers, called a message schedule w[]
 6. Use binary operations, right shift, and right rotate to change the entries in the message schedule.
 <img width="732" alt="image" src="https://github.com/user-attachments/assets/c5cfd490-a9b5-4e3c-9ed7-529937b01179" />
 
-7. Change round constants and hash values
-8. Concatenate final values
+7. Initialize constants that will change based on round constants and message schedule that we will add to hash values
+8. Concatenate final hash values
 <img width="952" alt="image" src="https://github.com/user-attachments/assets/729874f2-3cb9-4226-a127-bd699adad3be" />
 
 ## Weaknesses
